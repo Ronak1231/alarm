@@ -1,0 +1,17 @@
+
+import streamlit as st
+import winsound
+from threading import Thread
+
+# Function to sound the alarm
+def sound_alarm():
+    for _ in range(5):  # Sound the alarm 5 times
+        winsound.Beep(1000, 500)  # 1000Hz for 500ms
+
+# Streamlit UI
+st.title("Remote Alarm Trigger")
+st.write("Press the button below to sound an alarm on your laptop.")
+
+if st.button("Trigger Alarm"):
+    st.success("Alarm is sounding!")
+    Thread(target=sound_alarm).start()
