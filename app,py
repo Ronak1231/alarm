@@ -1,16 +1,16 @@
 import streamlit as st
-import winsound
-from threading import Thread
+import requests
 
-# Function to sound the alarm
-def sound_alarm():
-    for _ in range(5):  # Sound the alarm 5 times
-        winsound.Beep(1000, 500)  # 1000Hz for 500ms
-
-# Streamlit UI
 st.title("Remote Alarm Trigger")
-st.write("Press the button below to sound an alarm on your laptop.")
+
+public_url = "https://fruity-goats-bow.loca.lt/"  # Replace with LocalTunnel URL
 
 if st.button("Trigger Alarm"):
-    st.success("Alarm is sounding!")
-    Thread(target=sound_alarm).start()
+    try:
+        response = requests.get(f"{public_url}/trigger_alarm")
+        if response.status_code == 200:
+            st.success("Alarm triggered!")
+        else:
+            st.error("Failed to trigger alarm.")
+    except Exception as e:
+        st.error(f"Error: {e}")
