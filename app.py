@@ -3,7 +3,7 @@ import requests
 
 st.title("Remote Alarm Trigger")
 
-public_url = "https://eager-mice-give.loca.lt/"  # Replace with LocalTunnel URL
+public_url = "https://grumpy-roses-smile.loca.lt/"  # Replace with LocalTunnel URL
 
 if st.button("Trigger Alarm"):
     try:
